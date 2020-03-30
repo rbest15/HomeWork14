@@ -3,9 +3,8 @@
 
 target 'HomeWork14' do
   # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
-
+pod 'RealmSwift', :modular_headers => true
+pod 'Realm', :modular_headers => true
   # Pods for HomeWork14
-	pod 'RealmSwift'
 
 end

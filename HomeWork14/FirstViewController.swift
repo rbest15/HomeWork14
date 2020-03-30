@@ -14,7 +14,17 @@ class FirstViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        nameTextField.delegate = self
+        secondNameTextField.delegate = self
         nameTextField.text = Persistance.shared.userName
         secondNameTextField.text = Persistance.shared.userSecondName
     }
 }
+
+extension FirstViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+         textField.resignFirstResponder()
+        return true
+    }
+}
+

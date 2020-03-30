@@ -14,5 +14,6 @@ class SecondAddViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addTextView.becomeFirstResponder()
     }
 }
