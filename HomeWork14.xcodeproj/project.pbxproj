@@ -21,6 +21,10 @@
 		6FE4A893240BA24F00949719 /* HomeWork14.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6FE4A891240BA24F00949719 /* HomeWork14.xcdatamodeld */; };
 		6FE4A895240BA25400949719 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FE4A894240BA25400949719 /* Assets.xcassets */; };
 		6FE4A898240BA25400949719 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FE4A896240BA25400949719 /* LaunchScreen.storyboard */; };
+		6FF850A2243375920096229B /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF850A1243375920096229B /* ThirdViewController.swift */; };
+		6FF850A42433782D0096229B /* ThirdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF850A32433782D0096229B /* ThirdTableViewCell.swift */; };
+		6FF850A624337D3A0096229B /* ThirdDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF850A524337D3A0096229B /* ThirdDetailViewController.swift */; };
+		6FFC456324338B5800EEFC6A /* ThirdAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFC456224338B5800EEFC6A /* ThirdAddViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +45,10 @@
 		6FE4A894240BA25400949719 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6FE4A897240BA25400949719 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6FE4A899240BA25400949719 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6FF850A1243375920096229B /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		6FF850A32433782D0096229B /* ThirdTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdTableViewCell.swift; sourceTree = "<group>"; };
+		6FF850A524337D3A0096229B /* ThirdDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdDetailViewController.swift; sourceTree = "<group>"; };
+		6FFC456224338B5800EEFC6A /* ThirdAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdAddViewController.swift; sourceTree = "<group>"; };
 		FD48760C3BDB8EA3086B9878 /* Pods-HomeWork14.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeWork14.debug.xcconfig"; path = "Target Support Files/Pods-HomeWork14/Pods-HomeWork14.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,6 +94,10 @@
 				6F4C202724323A4C00D1FF90 /* SecondDetailsViewController.swift */,
 				6F4C2029243245B300D1FF90 /* SecondAddViewController.swift */,
 				6F4C20252432363400D1FF90 /* SecondTableViewCell.swift */,
+				6FF850A1243375920096229B /* ThirdViewController.swift */,
+				6FF850A32433782D0096229B /* ThirdTableViewCell.swift */,
+				6FF850A524337D3A0096229B /* ThirdDetailViewController.swift */,
+				6FFC456224338B5800EEFC6A /* ThirdAddViewController.swift */,
 				6F4C201F24322E2400D1FF90 /* SaveFile.swift */,
 				6FE4A894240BA25400949719 /* Assets.xcassets */,
 				6FE4A896240BA25400949719 /* LaunchScreen.storyboard */,
@@ -211,12 +223,16 @@
 			files = (
 				6F4C202A243245B300D1FF90 /* SecondAddViewController.swift in Sources */,
 				6FE4A893240BA24F00949719 /* HomeWork14.xcdatamodeld in Sources */,
+				6FFC456324338B5800EEFC6A /* ThirdAddViewController.swift in Sources */,
 				6FE4A88D240BA24F00949719 /* ViewController.swift in Sources */,
 				6FE4A889240BA24F00949719 /* AppDelegate.swift in Sources */,
 				6F4C20262432363400D1FF90 /* SecondTableViewCell.swift in Sources */,
+				6FF850A42433782D0096229B /* ThirdTableViewCell.swift in Sources */,
 				6F4C2022243230BB00D1FF90 /* FirstViewController.swift in Sources */,
+				6FF850A624337D3A0096229B /* ThirdDetailViewController.swift in Sources */,
 				6F4C20242432359E00D1FF90 /* SecondViewController.swift in Sources */,
 				6F4C202824323A4C00D1FF90 /* SecondDetailsViewController.swift in Sources */,
+				6FF850A2243375920096229B /* ThirdViewController.swift in Sources */,
 				6FE4A88B240BA24F00949719 /* SceneDelegate.swift in Sources */,
 				6F4C202024322E2400D1FF90 /* SaveFile.swift in Sources */,
 			);
