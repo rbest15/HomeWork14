@@ -1,7 +1,7 @@
 import UIKit
 import CoreData
 
-class ThirdViewController: UIViewController, ThirdDetailViewDelegate, ThirdAddViewDelegate {
+class ThirdViewController: UIViewController, ThirdDetailViewDelegate, ThirdAddViewDelegate, ThirdCellDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -73,6 +73,14 @@ class ThirdViewController: UIViewController, ThirdDetailViewDelegate, ThirdAddVi
         }
         tableView.deleteRows(at: [index], with: .automatic)
     }
+    
+    func taskDoneChanged(_ object: NSManagedObject ,_ prevState: Bool){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+    }
 }
 
 extension ThirdViewController: UITableViewDelegate, UITableViewDataSource {
@@ -83,6 +91,7 @@ extension ThirdViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "thirdCell") as! ThirdTableViewCell
         cell.thirdTextLable.text = tasksArrayCD[indexPath.row].value(forKey: "text") as? String
+        cell.objectDone.isOn = tasksArrayCD[indexPath.row].value(forKey: "done") as! Bool
         return cell
     }
     
@@ -110,4 +119,8 @@ protocol ThirdDetailViewDelegate {
 
 protocol ThirdAddViewDelegate {
     func addTask(_ text: String)
+}
+
+protocol ThirdCellDelegate {
+    func taskDoneChanged(_ object: NSManagedObject ,_ prevState: Bool)
 }
