@@ -3,6 +3,7 @@ import UIKit
 class ThirdTableViewCell: UITableViewCell {
 
     @IBOutlet weak var thirdTextLable: UILabel!
+    @IBOutlet weak var objectDone: UISwitch!
     
     override func awakeFromNib() {
         super.awakeFromNib()

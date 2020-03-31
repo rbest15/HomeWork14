@@ -74,20 +74,28 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pm-pU-w0V">
-                                                    <rect key="frame" x="25" y="16" width="344" height="46"/>
+                                                    <rect key="frame" x="70" y="16" width="299" height="46"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cfC-Sz-uxY">
+                                                    <rect key="frame" x="7" y="24" width="49" height="31"/>
+                                                </switch>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="2pm-pU-w0V" firstAttribute="leading" secondItem="heR-3s-2Ru" secondAttribute="leadingMargin" constant="5" id="AeT-VZ-XPQ"/>
+                                                <constraint firstAttribute="bottom" secondItem="cfC-Sz-uxY" secondAttribute="bottom" constant="23" id="0SY-IK-Gvl"/>
+                                                <constraint firstItem="2pm-pU-w0V" firstAttribute="leading" secondItem="heR-3s-2Ru" secondAttribute="leadingMargin" constant="50" id="AeT-VZ-XPQ"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="2pm-pU-w0V" secondAttribute="bottom" constant="5" id="Jbd-Bu-CPd"/>
+                                                <constraint firstItem="cfC-Sz-uxY" firstAttribute="top" secondItem="heR-3s-2Ru" secondAttribute="top" constant="24" id="KPq-2j-vJR"/>
+                                                <constraint firstItem="cfC-Sz-uxY" firstAttribute="leading" secondItem="heR-3s-2Ru" secondAttribute="leading" constant="7" id="MMz-vZ-jvZ"/>
+                                                <constraint firstItem="2pm-pU-w0V" firstAttribute="leading" secondItem="cfC-Sz-uxY" secondAttribute="trailing" constant="16" id="Q7m-eM-wKa"/>
                                                 <constraint firstItem="2pm-pU-w0V" firstAttribute="top" secondItem="heR-3s-2Ru" secondAttribute="topMargin" constant="5" id="pgk-SB-Zfs"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="2pm-pU-w0V" secondAttribute="trailing" constant="5" id="r5N-Eg-644"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="objectDone" destination="cfC-Sz-uxY" id="71m-Tr-3xQ"/>
                                             <outlet property="thirdTextLable" destination="2pm-pU-w0V" id="hzr-sX-usa"/>
                                         </connections>
                                     </tableViewCell>

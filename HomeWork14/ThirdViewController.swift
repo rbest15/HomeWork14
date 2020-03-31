@@ -51,6 +51,7 @@ class ThirdViewController: UIViewController, ThirdDetailViewDelegate, ThirdAddVi
         let entity = NSEntityDescription.entity(forEntityName: "TaskCoreData", in: managedContext)!
         let newTask = NSManagedObject(entity: entity, insertInto: managedContext)
         newTask.setValue(text, forKey: "text")
+        newTask.setValue(false, forKey: "done")
         do {
             try managedContext.save()
             tasksArrayCD.append(newTask)
@@ -93,6 +94,13 @@ extension ThirdViewController: UITableViewDelegate, UITableViewDataSource {
         vc.index = indexPath
         vc.object = tasksArrayCD[indexPath.row]
         present(vc, animated: true, completion: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            removeFromData(tasksArrayCD[indexPath.row], indexPath)
+            reloadTableView()
+        }
     }
 }
 
