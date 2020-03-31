@@ -10,11 +10,21 @@ class ThirdViewController: UIViewController, ThirdDetailViewDelegate, ThirdAddVi
         vc.delegate = self
         present(vc, animated: true)
     }
-    var tasksArray : [TaskCD] = []
+
     var tasksArrayCD : [NSManagedObject] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "TaskCoreData")
+        do {
+            tasksArrayCD = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Fetch error \(error), \(error.userInfo)")
+        }
     }
     
     fileprivate func reloadTableView() {
@@ -23,14 +33,44 @@ class ThirdViewController: UIViewController, ThirdDetailViewDelegate, ThirdAddVi
         }
     }
     
-    func deleteTask(_ index: IndexPath) {
-        tasksArray.remove(at: index.row)
+    func deleteTask(_ object: NSManagedObject, _ index: IndexPath) {
+        removeFromData(object,index)
         reloadTableView()
     }
 
-    func addTask(_ task: TaskCD) {
-        tasksArray.append(task)
+    func addTask(_ text: String) {
+        save(text)
         reloadTableView()
+    }
+    
+    func save(_ text: String){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "TaskCoreData", in: managedContext)!
+        let newTask = NSManagedObject(entity: entity, insertInto: managedContext)
+        newTask.setValue(text, forKey: "text")
+        do {
+            try managedContext.save()
+            tasksArrayCD.append(newTask)
+        } catch let error as NSError {
+            print(error, error.userInfo)
+        }
+    }
+    func removeFromData(_ object: NSManagedObject, _ index: IndexPath){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        managedContext.delete(object)
+        do {
+            try managedContext.save()
+            tasksArrayCD.remove(at: index.row)
+        } catch let error as NSError {
+            print(error, error.userInfo)
+        }
+        tableView.deleteRows(at: [index], with: .automatic)
     }
 }
 
@@ -41,27 +81,25 @@ extension ThirdViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "thirdCell") as! ThirdTableViewCell
-        cell.thirdTextLable.text = tasksArray[indexPath.row].text
+        cell.thirdTextLable.text = tasksArrayCD[indexPath.row].value(forKey: "text") as? String
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = storyboard!.instantiateViewController(withIdentifier: "details2") as! ThirdDetailViewController
-        vc.curentTask = tasksArray[indexPath.row]
         vc.index = indexPath
+        vc.currentTaskText = tasksArrayCD[indexPath.row].value(forKey: "text") as? String
         vc.delegate = self
+        vc.index = indexPath
+        vc.object = tasksArrayCD[indexPath.row]
         present(vc, animated: true, completion: nil)
     }
 }
 
-class TaskCD {
-    var text = ""
-}
-
 protocol ThirdDetailViewDelegate {
-    func deleteTask(_ index: IndexPath)
+    func deleteTask(_ object: NSManagedObject, _ index: IndexPath)
 }
 
 protocol ThirdAddViewDelegate {
-    func addTask(_ task: TaskCD)
+    func addTask(_ text: String)
 }

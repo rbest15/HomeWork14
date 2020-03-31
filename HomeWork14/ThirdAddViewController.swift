@@ -6,10 +6,7 @@ class ThirdAddViewController: UIViewController {
     var delegate : ThirdAddViewDelegate?
 
     @IBAction func thirdAddButtonPressed(_ sender: Any) {
-        let newTask = TaskCD()
-        newTask.text = addTextView.text
-        print(delegate)
-        delegate?.addTask(newTask)
+        delegate?.addTask(addTextView.text)
         dismiss(animated: true, completion: nil)
     }
     
