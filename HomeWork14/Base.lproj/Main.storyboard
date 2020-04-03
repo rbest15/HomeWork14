@@ -98,7 +98,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="objectDone" destination="cfC-Sz-uxY" id="71m-Tr-3xQ"/>
+                                            <outlet property="doneSwitch" destination="cfC-Sz-uxY" id="JNb-3W-aFg"/>
                                             <outlet property="thirdTextLable" destination="2pm-pU-w0V" id="hzr-sX-usa"/>
                                         </connections>
                                     </tableViewCell>

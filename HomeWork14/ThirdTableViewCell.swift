@@ -1,16 +1,16 @@
 import UIKit
-import CoreData
 
 class ThirdTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var doneSwitch: UISwitch!
     @IBOutlet weak var thirdTextLable: UILabel!
-    @IBOutlet weak var objectDone: UISwitch!
-    var object : NSManagedObject?
-    @IBAction func doneChanged(_ sender: Any) {
-        delegate?.taskDoneChanged(object!,objectDone.isOn)
-    }
+    var index : IndexPath?
     var delegate : ThirdCellDelegate?
     
+    @IBAction func doneChanged(_ sender: Any) {
+        delegate?.taskDoneChanged(index!, doneSwitch.isOn)
+    }
+       
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -19,5 +19,4 @@ class ThirdTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
     }
-
 }

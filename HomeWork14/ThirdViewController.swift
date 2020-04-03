@@ -39,11 +39,11 @@ class ThirdViewController: UIViewController, ThirdDetailViewDelegate, ThirdAddVi
     }
 
     func addTask(_ text: String) {
-        save(text)
+        saveTask(text)
         reloadTableView()
     }
     
-    func save(_ text: String){
+    func saveTask(_ text: String){
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
@@ -74,12 +74,17 @@ class ThirdViewController: UIViewController, ThirdDetailViewDelegate, ThirdAddVi
         tableView.deleteRows(at: [index], with: .automatic)
     }
     
-    func taskDoneChanged(_ object: NSManagedObject ,_ prevState: Bool){
+    func taskDoneChanged(_ index: IndexPath, _ state: Bool){
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
         let managedContext = appDelegate.persistentContainer.viewContext
-        
+        tasksArrayCD[index.row].setValue(state, forKey: "done")
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print(error, error.userInfo)
+        }
     }
 }
 
@@ -91,7 +96,9 @@ extension ThirdViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "thirdCell") as! ThirdTableViewCell
         cell.thirdTextLable.text = tasksArrayCD[indexPath.row].value(forKey: "text") as? String
-        cell.objectDone.isOn = tasksArrayCD[indexPath.row].value(forKey: "done") as! Bool
+        cell.index = indexPath
+        cell.delegate = self
+        cell.doneSwitch.isOn = tasksArrayCD[indexPath.row].value(forKey: "done") as? Bool ?? false
         return cell
     }
     
@@ -122,5 +129,5 @@ protocol ThirdAddViewDelegate {
 }
 
 protocol ThirdCellDelegate {
-    func taskDoneChanged(_ object: NSManagedObject ,_ prevState: Bool)
+    func taskDoneChanged(_ index: IndexPath, _ state: Bool)
 }
